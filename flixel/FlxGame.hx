@@ -231,6 +231,8 @@ class FlxGame extends Sprite
 	 */
 	var postProcesses:Array<PostProcess> = [];
 	#end
+		
+	public static var destroyOldStates:Bool = true;
 	
 	/**
 	 * Instantiate a new game object.
@@ -613,7 +615,7 @@ class FlxGame extends Sprite
 		#end
 		
 		// Destroy the old state (if there is an old state)
-		if (_state != null)
+		if (_state != null && destroyOldStates)
 			_state.destroy();
 		
 		// we need to clear bitmap cache only after previous state is destroyed, which will reset useCount for FlxGraphic objects
